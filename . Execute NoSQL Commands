@@ -1,0 +1,30 @@
+# Start Mongo shell
+mongo
+
+# Create or switch to a database
+use bda_demo
+
+# Create a collection and insert documents
+db.students.insertMany([
+ {name: "Amit", branch: "IT", marks: 85},
+ {name: "Neha", branch: "CS", marks: 90}
+])
+
+# Display all documents
+db.students.find()
+
+# Find students with marks greater than 80
+db.students.find({marks: {$gt: 80}})
+
+# Update a student’s marks
+db.students.updateOne({name: "Amit"}, {$set: {marks: 88}})
+
+# Delete one record
+db.students.deleteOne({name: "Neha"})
+
+
+Steps:
+
+Start MongoDB server (Linux):
+sudo service mongod start   # or `mongod` in a separate terminal
+
