@@ -1,0 +1,32 @@
+# Install and load ggplot2 (if not already)
+# install.packages("ggplot2")
+library(ggplot2)
+
+# Sample data
+students <- data.frame(
+ name = c("Amit", "Neha", "Ravi", "Priya"),
+ marks = c(85, 90, 78, 88)
+)
+
+# Bar chart
+ggplot(students, aes(x = name, y = marks, fill = name)) +
+ geom_bar(stat = "identity") +
+ ggtitle("Student Marks Visualization") +
+ xlab("Name") +
+ ylab("Marks")
+
+# Pie chart
+pie(students$marks, labels = students$name, main = "Marks Distribution")
+
+
+
+Steps:
+In RStudio:
+Open RStudio → File → New File → R Script
+
+Paste code → Save as visualization.R
+
+Click Run (Ctrl + Enter) to run selected lines
+or Source (Ctrl + Shift + Enter) to run whole script
+
+See graphs in Plots tab → Export → Save as Image
