@@ -1,0 +1,32 @@
+1. Execute HDFS Basic Commands
+
+# Create a directory in HDFS
+hdfs dfs -mkdir /bda_demo
+
+# Copy a file from local system to HDFS
+hdfs dfs -put sample.txt /bda_demo/
+
+# List files in a directory
+hdfs dfs -ls /bda_demo
+
+# Read the content of a file
+hdfs dfs -cat /bda_demo/sample.txt
+
+# Copy file from HDFS to local
+hdfs dfs -get /bda_demo/sample.txt /home/user/
+
+# Remove a file or directory
+hdfs dfs -rm /bda_demo/sample.txt
+
+
+Steps:
+
+Open terminal (in VM or server where Hadoop is installed).
+(Start services if not already)
+start-dfs.sh
+start-yarn.sh
+jps   # verify NameNode, DataNode, ResourceManager, NodeManager appear
+
+
+Create local sample file (if needed):
+echo "Hello BDA" > sample.txt
