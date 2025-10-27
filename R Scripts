@@ -1,0 +1,32 @@
+# Create vectors
+name <- c("Amit", "Neha", "Ravi", "Priya")
+marks <- c(85, 90, 78, 88)
+
+# Create a data frame
+students <- data.frame(name, marks)
+
+# Display data
+print(students)
+
+# Calculate average marks
+avg_marks <- mean(students$marks)
+cat("Average Marks:", avg_marks, "\n")
+
+# Sort by marks
+sorted <- students[order(-students$marks), ]
+print(sorted)
+
+
+
+Steps (RStudio — recommended):
+Open RStudio → File → New File → R Script → paste the R code.
+
+Save as students.R.
+
+Click Source (or run lines). Output appears in Console.
+
+Steps (VS Code):
+Save the script as students.R.
+
+Open VS Code terminal and run:
+Rscript students.R
