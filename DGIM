@@ -1,0 +1,31 @@
+class DGIM:
+ def __init__(self, window):
+ self.window = window
+ self.buckets = []
+
+ def add(self, bit):
+ if bit: self.buckets.insert(0, (1, 0))
+ self.buckets = [(s, t+1) for s, t in self.buckets]
+ i = 0
+ while i < len(self.buckets)-2:
+ if self.buckets[i][0] == self.buckets[i+1][0] == self.buckets[i+2][0]:
+ self.buckets[i+1] = (2*self.buckets[i][0], self.buckets[i+1][1])
+ del self.buckets[i]
+ else: i += 1
+ total = 0
+ new = []
+ for s, t in self.buckets:
+ total += s
+ if total <= self.window: new.append((s, t))
+ self.buckets = new
+ def count(self):
+ if not self.buckets: return 0
+ return sum(s for s, _ in self.buckets[:-1]) + self.buckets[-1][0]//2
+
+# ----- User Input Section -----
+stream = input("Enter bit stream (e.g., 1011010101): ")
+window = int(input("Enter window size: "))
+dgim = DGIM(window)
+for b in map(int, stream):
+ dgim.add(b)
+print("Approx count of 1s in last", window, "bits:", dgim.count())
