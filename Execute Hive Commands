@@ -1,0 +1,40 @@
+-- Create a database
+CREATE DATABASE bda_demo;
+
+-- Switch to the database
+USE bda_demo;
+
+-- Create a table
+CREATE TABLE students (
+ id INT,
+ name STRING,
+ marks INT
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED AS TEXTFILE;
+
+-- Load data into the table
+LOAD DATA LOCAL INPATH '/home/user/students.csv' INTO TABLE students;
+
+-- Display data
+SELECT * FROM students;
+
+-- Find average marks
+SELECT AVG(marks) AS avg_marks FROM students;
+
+-- Filter records
+SELECT * FROM students WHERE marks > 80;
+
+
+
+
+Steps:
+
+Ensure Hadoop is running:
+start-dfs.sh
+start-yarn.sh
+jps
+
+Start Hive shell:
+hive
